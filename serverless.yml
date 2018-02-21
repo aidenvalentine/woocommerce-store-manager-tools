@@ -1,0 +1,22 @@
+service: woocommerce-manager-tools
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: ${opt:stage}
+  region: ${file(./serverless.env.yml):${opt:stage}.AWS_REGION}
+  package:
+  exclude:
+    - .git
+# Cloud functions
+functions:
+  descriptionSummarizer:
+    handler: index.descriptionSummarizer
+    environment:
+      WORDPRESS_URL: ${file(./serverless.env.yml):${opt:stage}.WORDPRESS_URL}
+      WC_CONSUMER_KEY: ${file(./serverless.env.yml):${opt:stage}.WC_CONSUMER_KEY}
+      WC_CONSUMER_SECRET: ${file(./serverless.env.yml):${opt:stage}.WC_CONSUMER_SECRET}
+      ALGO_CLIENT: ${file(./serverless.env.yml):${opt:stage}.ALGO_CLIENT}
+    runtime: nodejs6.10
+    description: 'Uses AI to generate short descriptions from the full description.'
+    memorySize: 128
+    timeout: 10
