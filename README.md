@@ -17,7 +17,7 @@ Just start the server and HTTP POST the Wordpress IDs of the products you'd like
 1. For each of your environments, replace the values in the `serverless-sample.env.yml` file located in the root of this project. Save the new file as `serverless.env.yml` in the root dir.
 1. Open a cmd/bash console window in the root directory of this project.
 1. Run command `$ npm install` to install node dependencies.
-1. Run command `$ node app.js` to start the server on port 3000. `http://localhost:/3000`
+1. Run command `$ node app.js` to start the server on port 3000. `http://localhost:3000/`
 1. Send an HTTP POST request with the Wordpress ID of the product as the body (see below).
 
 An example JSON object containing the ID of a WooCommerce product to generate a short description for.
